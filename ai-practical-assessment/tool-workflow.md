@@ -47,24 +47,27 @@ During development, context was given by:
 
 ### Persistent project context (later phase)
 
-After core features were built, a dedicated folder was created:
+After core features were built, documentation was organized under:
 
 ```
+ai-practical-assessment/
+├── design-notes.md           # Architecture, stack, conventions
+├── api-contract.md           # API contracts, RBAC, routes
+├── implementation-plan.md    # Done vs. remaining work
+├── acceptance-criteria.md    # Definition of done
+├── tool-workflow.md          # This document
+└── ai-prompts/               # Prompt templates by phase
+
 tool-specific/cursor-workflow/
-├── project-context.md      # Architecture, stack, conventions
-├── spec.md                 # API contracts, RBAC, routes
-├── tasks.md                # Done vs. remaining work
-├── acceptance-criteria.md  # Definition of done
 ├── cursor-rules-or-instructions.md
-├── prompt-history.md       # Exported Cursor conversation
-└── tool-workflow.md        # This document
+└── prompt-history.md         # Exported Cursor conversation
 ```
 
 **Recommended prompt prefix for future sessions:**
 
 ```
-Read tool-specific/cursor-workflow/project-context.md and spec.md before making changes.
-Follow cursor-rules-or-instructions.md. Do not change unrelated code.
+Read ai-practical-assessment/design-notes.md and api-contract.md before making changes.
+Follow tool-specific/cursor-workflow/cursor-rules-or-instructions.md. Do not change unrelated code.
 ```
 
 ### Cursor workspace rules
@@ -116,7 +119,7 @@ User listed five roles with plain-English rules. AI translated them into:
 When requirements were ambiguous, the agent either:
 
 - Inferred sensible defaults aligned with the domain (e.g. Manager can read tickets for report context), or
-- Implemented the strictest interpretation documented in `spec.md` for later review
+- Implemented the strictest interpretation documented in `api-contract.md` for later review
 
 ---
 
@@ -138,7 +141,7 @@ The agent explored the codebase first (router setup, existing hooks, error forma
 
 **Design artifacts produced:**
 
-- `spec.md` — API and RBAC specification
+- `api-contract.md` — API and RBAC specification
 - `acceptance-criteria.md` — testable checklist per feature
 - OpenAPI JSDoc in `backend/src/docs/`
 
@@ -194,7 +197,7 @@ Validation used multiple layers:
 
 ### Acceptance criteria
 
-`acceptance-criteria.md` defines per-feature checklists used to confirm completeness before marking tasks done in `tasks.md`.
+`acceptance-criteria.md` defines per-feature checklists used to confirm completeness before marking tasks done in `implementation-plan.md`.
 
 ### What was caught during validation
 
@@ -237,7 +240,7 @@ AI created reusable helpers in `tests/helpers/`:
 - Increased Jest `testTimeout` to 30s for slow Prisma `db push` in `beforeAll`
 - Tests run in band (`--runInBand`) to avoid SQLite file locking on Windows
 
-### Gaps (documented in tasks.md)
+### Gaps (documented in implementation-plan.md)
 
 - No dedicated **unit test** tier yet (services, validators tested via integration only)
 - No **frontend** automated tests yet
@@ -387,14 +390,17 @@ Actual: [behavior]
 ### Folder structure to copy
 
 ```
-tool-specific/cursor-workflow/
-├── project-context.md
-├── spec.md
-├── tasks.md
+ai-practical-assessment/
+├── design-notes.md
+├── api-contract.md
+├── implementation-plan.md
 ├── acceptance-criteria.md
-├── cursor-rules-or-instructions.md
 ├── tool-workflow.md
-└── prompt-history.md   # optional: export from Cursor for audit trail
+└── ai-prompts/
+
+tool-specific/cursor-workflow/
+├── cursor-rules-or-instructions.md
+└── prompt-history.md
 ```
 
 ### Key lessons from this project

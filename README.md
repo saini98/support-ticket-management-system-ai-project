@@ -130,8 +130,11 @@ Requires Docker Desktop. Initialize the database on first run with `npx prisma d
 
 ```
 support-ticket-system-ai-project/
-├── backend/          # Express API, Prisma, tests
-├── frontend/         # React SPA
+├── ai-practical-assessment/   # Assessment submission docs
+├── backend/                   # Express API, Prisma, tests
+├── frontend/                  # React SPA
+├── tool-specific/
+│   └── cursor-workflow/       # Cursor rules & prompt history
 ├── .gitignore
 └── README.md
 ```
