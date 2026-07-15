@@ -1,0 +1,13 @@
+{
+  "watch": ["src"],
+  "ext": "ts,json",
+  "ignore": [
+    "node_modules",
+    "dist",
+    "prisma/migrations",
+    "src/infrastructure/prisma/generated/**",
+    "dev.db",
+    "dev.db-journal"
+  ],
+  "exec": "tsx src/server.ts"
+}
